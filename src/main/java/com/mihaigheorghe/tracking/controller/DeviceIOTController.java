@@ -1,6 +1,5 @@
 package com.mihaigheorghe.tracking.controller;
 
-import com.mihaigheorghe.tracking.domain.device.LocationData;
 import com.mihaigheorghe.tracking.dto.LocationDataDTO;
 import com.mihaigheorghe.tracking.dto.LocationDataRequestDTO;
 import com.mihaigheorghe.tracking.service.DeviceService;
@@ -22,7 +21,7 @@ public class DeviceIOTController {
     }
 
     @PostMapping()
-    public ResponseEntity<LocationDataDTO> create(@RequestBody LocationDataRequestDTO requestDTO) {
+    public ResponseEntity<LocationDataDTO> addData(@RequestBody LocationDataRequestDTO requestDTO) {
         LocationDataDTO result = deviceService.registerLocation(requestDTO);
         if(result == null) {
             return ResponseEntity.notFound().build();

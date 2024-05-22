@@ -7,11 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.socket.WebSocketSession;
-
-import java.io.IOException;
-import java.time.LocalTime;
 
 import static com.mihaigheorghe.tracking.domain.user.Role.ADMIN;
 import static com.mihaigheorghe.tracking.domain.user.Role.USER;
@@ -33,7 +28,7 @@ public class TrackingAppApplication {
                     .firstname("Admin")
                     .lastname("Admin")
                     .email("admin@mail.com")
-                    .password("password")
+                    .password("Parola@123")
                     .role(ADMIN)
                     .build();
             System.out.println("Admin token: " + service.register(admin).getAccessToken());
@@ -42,10 +37,12 @@ public class TrackingAppApplication {
                     .firstname("Admin")
                     .lastname("Admin")
                     .email("manager@mail.com")
-                    .password("password")
+                    .password("Parola@123")
                     .role(USER)
                     .build();
             System.out.println("User token: " + service.register(user).getAccessToken());
+            System.out.println("Device registered: " + deviceService.registerDevice());
+            System.out.println("Device registered: " + deviceService.registerDevice());
             System.out.println("Device registered: " + deviceService.registerDevice());
         };
     }

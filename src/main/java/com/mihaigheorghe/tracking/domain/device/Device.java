@@ -2,6 +2,7 @@ package com.mihaigheorghe.tracking.domain.device;
 
 import com.mihaigheorghe.tracking.domain.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,6 +20,8 @@ public class Device {
     private String serialNumber;
 
     private String name;
+
+    private String category = "OTHER";
 
     @OneToMany(mappedBy = "device")
     private List<LocationData> locationHistory;
