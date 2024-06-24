@@ -1,6 +1,5 @@
 package com.mihaigheorghe.tracking.controller;
 
-import com.mihaigheorghe.tracking.config.web_socket.MyWebSocketHandler;
 import com.mihaigheorghe.tracking.domain.user.User;
 import com.mihaigheorghe.tracking.dto.DeviceDTO;
 import com.mihaigheorghe.tracking.dto.GeofenceDTO;

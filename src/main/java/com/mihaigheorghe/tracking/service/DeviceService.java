@@ -103,12 +103,28 @@ public class DeviceService {
     }
 
     public LocationDataDTO registerLocation(LocationDataRequestDTO requestDTO){
-        Optional<Device> device = deviceRepository.findById(requestDTO.getDeviceSerialNumber());
-        if(device.isPresent()){
+        Optional<Device> deviceOptional = deviceRepository.findById(requestDTO.getDeviceSerialNumber());
+        if(deviceOptional.isPresent()){
+            Device device =  deviceOptional.get();
             LocationData locationData = LocationData.builder().
                     latitude(requestDTO.getLatitude()).
                     longitude(requestDTO.getLongitude()).
-                    date(new Date()).device(device.get()).build();
+                    date(new Date()).device(device).build();
+
+            Geofence geofence = device.getGeofence();
+            if(geofence != null && device.getIsLocked()){
+                if(!GeoUtils.isPointInCircle(
+                        locationData.getLatitude(),
+                        locationData.getLongitude(),
+                        geofence.getLatitude(),
+                        geofence.getLongitude(),
+                        geofence.getRadius()
+                )){
+                    myWebSocketHandler.broadcastMessage("notification: " + device.getSerialNumber());
+                };
+            }
+
+
             return LocationDataDTO.from(locationDataRepository.save(locationData));
         }
         return null;
