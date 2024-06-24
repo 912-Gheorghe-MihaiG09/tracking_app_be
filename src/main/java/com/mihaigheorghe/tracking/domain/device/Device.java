@@ -23,6 +23,11 @@ public class Device {
 
     private String category = "OTHER";
 
+    @OneToOne
+    private Geofence geofence;
+
+    private Boolean isLocked = false;
+
     @OneToMany(mappedBy = "device")
     private List<LocationData> locationHistory;
 

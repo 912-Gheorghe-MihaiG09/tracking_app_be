@@ -2,6 +2,7 @@ package com.mihaigheorghe.tracking;
 
 import com.mihaigheorghe.tracking.controller.auth.AuthenticationService;
 import com.mihaigheorghe.tracking.controller.auth.RegisterRequest;
+import com.mihaigheorghe.tracking.dto.LocationDataRequestDTO;
 import com.mihaigheorghe.tracking.service.DeviceService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -40,10 +41,36 @@ public class TrackingAppApplication {
                     .password("Parola@123")
                     .role(USER)
                     .build();
+            String firstDeviceSN = deviceService.registerDevice();
+            String secondDeviceSN = deviceService.registerDevice();
+            String thirdDeviceSN = deviceService.registerDevice();
+
             System.out.println("User token: " + service.register(user).getAccessToken());
-            System.out.println("Device registered: " + deviceService.registerDevice());
-            System.out.println("Device registered: " + deviceService.registerDevice());
-            System.out.println("Device registered: " + deviceService.registerDevice());
+            System.out.println("Device registered: " + firstDeviceSN);
+            System.out.println("Device registered: " + secondDeviceSN);
+            System.out.println("Device registered: " + thirdDeviceSN);
+
+            LocationDataRequestDTO firstDeviceLocation = new LocationDataRequestDTO(
+                    firstDeviceSN,
+                    46.7749,
+                    23.5863
+            );
+
+            LocationDataRequestDTO secondDeviceLocation = new LocationDataRequestDTO(
+                    secondDeviceSN,
+                    46.7699,
+                    23.5888
+            );
+
+            LocationDataRequestDTO thirdDeviceLocation = new LocationDataRequestDTO(
+                    thirdDeviceSN,
+                    46.7792,
+                    23.5837
+            );
+
+            deviceService.registerLocation(firstDeviceLocation);
+            deviceService.registerLocation(secondDeviceLocation);
+            deviceService.registerLocation(thirdDeviceLocation);
         };
     }
 }

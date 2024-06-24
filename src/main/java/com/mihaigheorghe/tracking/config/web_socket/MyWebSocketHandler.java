@@ -37,7 +37,7 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
         sessions.remove(session);
     }
 
-    private void broadcastMessage(String message) {
+    public void broadcastMessage(String message) {
         // Send the message to all connected sessions
         for (WebSocketSession session : sessions) {
             try {
@@ -50,4 +50,6 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
             }
         }
     }
+
+
 }

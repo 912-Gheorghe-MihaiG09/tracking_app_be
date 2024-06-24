@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class LocationDataRequestDTO {
-    private String deviceSerialNumber;
-    private double latitude;
-    private double longitude;
+@NoArgsConstructor
+public class UpdateDeviceDTO {
+    String name;
+    String category;
 }
