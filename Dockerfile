@@ -8,7 +8,7 @@ RUN mvn clean package -DskipTests
 # Use an official OpenJDK runtime as a parent image
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/tracking-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
