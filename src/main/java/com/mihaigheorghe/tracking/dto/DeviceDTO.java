@@ -31,7 +31,7 @@ public class DeviceDTO {
         deviceDTO.setSerialNumber(device.getSerialNumber());
         deviceDTO.setName(device.getName());
         if(!locationHistory.isEmpty()) {
-            deviceDTO.setLocation(LocationDataDTO.from(device.getLocationHistory().getLast()));
+            deviceDTO.setLocation(LocationDataDTO.from(locationHistory.get(locationHistory.size() - 1)));
         }
         deviceDTO.setCategory(device.getCategory());
         deviceDTO.setLocationHistory(device.getLocationHistory().stream().map(LocationDataDTO::from).toList());
