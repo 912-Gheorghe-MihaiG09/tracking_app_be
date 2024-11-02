@@ -12,3 +12,5 @@ Features:
 3. storing data received from the IOT devices in a database
 4. notifying the user if a IOT device sent a location from outside a geofence
 5. Creating a web socket where Mobile devices can send pings to IOT devices
+
+<img width="593" alt="datamodel" src="https://github.com/user-attachments/assets/48a88a36-b1eb-428f-a181-c54aee7c6cd9">
